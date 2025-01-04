@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+index
+{% endblock %}
+{% block content %}
+    <h1 class="mt=4">Welcome to tweet page !!!</h1>
+
+    <h2>
+        {% if form.instance.pk  %} 
+        Edit Tweet 
+        {% else %}
+        Create New Tweet 
+        {% endif %}
+    </h2>
+    <form method='post' enctype='multipart/form-data' class='form'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-warning mb-2">Tweet</button>
+
+    </form>
+    <a class="btn btn-primary" href="{% url 'tweet_list' %}">Go Back</a>
+
+{% endblock %}
